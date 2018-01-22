@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 
 /* Default fyrir fyrir heimasiðu er byrt index */
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Forsíða' });
+  res.render('index', { title: 'Forsíða' ,headder: 'Greinasafnið'});
 });
 /* Til að henda fólk i villu */
 app.get('/error', (req, res) => {
