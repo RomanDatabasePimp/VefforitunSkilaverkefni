@@ -1,0 +1,24 @@
+/* Aldrei gleyma "npm run scss" til að compile öll scss*/
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    box-sizing: border-box;
+    max-width: 1200px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  img { /* stylelint-disable-line */
+    width: 100%;
+  }
+  
+  header {
+    width: 100%;
+  }
