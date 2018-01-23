@@ -21,11 +21,11 @@ app.get('/', (req, res) => {
 });
 /* Til að henda fólk i villu */
 app.get('/error', (req, res) => {
-  throw new Error('Villa!');
+  res.render('error', { title: 'Villa' ,headder: 'Villa kom upp'});
 });
 /* Ef eitthvað er ekki til */
 function notFoundHandler(req, res, next) {
-  res.status(404).send('404 Not Found');
+  res.status(404).render('notfound', { title: '404' ,headder: 'Fanst ekki'});
 }
 
 function errorHandler(err, req, res, next) {

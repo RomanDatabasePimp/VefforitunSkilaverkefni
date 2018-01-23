@@ -1,9 +1,10 @@
 {
-  "name": "skilaverk1",
-  "version": "1.0.0",
+  "name": "Skilaverk_1",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "scss": "node-sass --watch scss -o public"
   },
   "keywords": [],
