@@ -13,6 +13,7 @@
   "dependencies": {
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "markdown-parse": "^0.2.1",
     "node-sass": "^4.7.2"
   }
 }

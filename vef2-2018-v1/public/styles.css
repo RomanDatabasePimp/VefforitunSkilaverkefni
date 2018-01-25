@@ -1,27 +1,24 @@
 @charset "UTF-8";
 /* Aldrei gleyma að keyra "npm run scss" til að compile öll scss*/
-*, *:before, *:after {
-  /* stylelint-disable-line */
-  box-sizing: inherit;
-  padding: 0;
-  margin: 0; }
-
 html {
   /* stylelint-disable-line */
   box-sizing: border-box;
   font-size: 16px;
   line-height: 1.5;
-  background-color: #eee; }
+  background-color: #eee;
+  color: #333; }
 
 @media (min-width: 1200px) {
   body {
     /* stylelint-disable-line */
     max-width: 1200px;
     margin: 0 auto;
-    overflow-x: hidden; } }
+    overflow-x: hidden;
+    font-family: 'Lora', sans-serif, serif; } }
 
 .header {
-  width: 100%; }
+  width: 100%;
+  padding-bottom: 1.875em; }
   .header__index {
     display: flex;
     width: 100%;
@@ -29,6 +26,7 @@ html {
     background: transparent url("header.jpg") no-repeat fixed 50% 50%;
     background-size: cover; }
     .header__index__title {
+      font-size: 3.0em;
       margin: 0 auto;
       color: #fff;
-      padding-top: 5em; }
+      padding-top: 2em; }

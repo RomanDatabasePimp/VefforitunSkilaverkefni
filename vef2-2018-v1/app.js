@@ -9,9 +9,11 @@ const app = express();
 const hostname = '127.0.0.1';
 const port = 3000;
 /* Variables init END */
-/* Tengja Css skjal(i/um) */
+
+/* Tengjum css skjali við */
 app.use(express.static(path.join(__dirname, 'public')));
-/* Tengja views */
+
+/* Tengja views möppu og viljum sjá .ejs skjöl */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -19,10 +21,12 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
   res.render('index', { title: 'Forsíða' ,headder: 'Greinasafnið'});
 });
+
 /* Til að henda fólk i villu */
 app.get('/error', (req, res) => {
   res.render('error', { title: 'Villa' ,headder: 'Villa kom upp'});
 });
+
 /* Ef eitthvað er ekki til */
 function notFoundHandler(req, res, next) {
   res.status(404).render('notfound', { title: '404' ,headder: 'Fanst ekki'});
@@ -30,12 +34,15 @@ function notFoundHandler(req, res, next) {
 
 function errorHandler(err, req, res, next) {
   console.error(err);
-  res.status(500).send('Villa!');
+  res.status(500).render('notfound', { title: '500' ,headder: 'Villa'});
 }
 
 app.use(notFoundHandler);
 app.use(errorHandler);
 
+
+
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+

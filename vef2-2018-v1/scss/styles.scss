@@ -12,6 +12,7 @@ html {/* stylelint-disable-line */
   font-size: 16px;
   line-height: 1.5;
   background-color: #eee;
+  color: #333;
 }
 
 @media (min-width: 1200px) {
@@ -19,11 +20,13 @@ html {/* stylelint-disable-line */
     max-width: 1200px;
     margin: 0 auto;
     overflow-x: hidden;
+    font-family: 'Lora', sans-serif, serif;
   }
 }
 
 .header {
   width: 100%;
+  padding-bottom: 1.875em;
 
   &__index {
     display: flex;
@@ -33,9 +36,10 @@ html {/* stylelint-disable-line */
     background-size: cover;
 
     &__title {
+      font-size: 3.0em;
       margin: 0 auto;
       color: #fff;
-      padding-top: 5em;
+      padding-top: 2em;
       }
     }
   }
