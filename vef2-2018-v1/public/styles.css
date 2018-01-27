@@ -1,5 +1,11 @@
 @charset "UTF-8";
 /* Aldrei gleyma að keyra "npm run scss" til að compile öll scss*/
+*, *:before, *:after {
+  /* stylelint-disable-line */
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0; }
+
 html {
   /* stylelint-disable-line */
   box-sizing: border-box;
