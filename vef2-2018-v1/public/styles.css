@@ -1,26 +1,91 @@
 @charset "UTF-8";
 /* Aldrei gleyma að keyra "npm run scss" til að compile öll scss*/
+/* 
+   Grunn letur stærð 16px
+      eina sem má nota fyrir fyrirsagnir
+      24px : 1.5em
+      32px : 2.0em
+      42px : 3.0em
+   Bil meiga bara vera annaðhvort 15px eða 30px  
+   Bakgrunnslitur er #eee og letur #333. Fyrirsögn í haus er #eee 
+
+   Sá ekki þörf þess að skipta þetta upp i skjöl i.e header.scss error.scss etc..
+   þess venga er þetta scss möppu, svo litið af kóða hætti við
+*/
+/* ------------ Variebles START --------- */
+/* ------------ Variebles END --------- */
+/* nullstilling*/
 *, *:before, *:after {
-  /* stylelint-disable-line */
   box-sizing: inherit;
   padding: 0;
   margin: 0; }
 
+/* Default stillingar */
 html {
-  /* stylelint-disable-line */
   box-sizing: border-box;
   font-size: 16px;
   line-height: 1.5;
   background-color: #eee;
   color: #333; }
 
+/* vill að myndin mun alltaf fylla upp foreldran */
+img {
+  width: 100%; }
+
+/* taka i burt undirstrik og  annað */
+a {
+  text-decoration: none;
+  color: #333; }
+
+/* gefa flex svo það er hægt að raða gögnum i þvi*/
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.875em; }
+
+/* heading stillingar start */
+h1 {
+  font-size: 3em;
+  font-family: 'Roboto', sans-serif; }
+
+h2 {
+  font-size: 2em;
+  padding-bottom: 0.938em;
+  font-family: 'Roboto', sans-serif; }
+
+h3 {
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif; }
+
+/* heading stillingar END */
+p {
+  padding-bottom: 0.938em;
+  font-weight: 500; }
+
 @media (min-width: 1200px) {
   body {
-    /* stylelint-disable-line */
     max-width: 1200px;
     margin: 0 auto;
     overflow-x: hidden;
     font-family: 'Lora', sans-serif, serif; } }
+
+.backbutton {
+  font-weight: 700; }
+
+/* Clasi fyrir villu meldingar */
+.error {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  .error__text {
+    margin: 0 auto;
+    font-size: 4em;
+    font-family: 'Lora', sans-serif, serif !important; }
+  .error__refferal {
+    padding-top: 1em;
+    margin: 0 auto;
+    font-weight: 700; }
 
 .header {
   width: 100%;
@@ -29,10 +94,28 @@ html {
     display: flex;
     width: 100%;
     height: 50vh;
-    background: transparent url("header.jpg") no-repeat fixed 50% 50%;
-    background-size: cover; }
+    background: transparent url("header.jpg") no-repeat;
+    background-size: cover;
+    background-position: 50% 65%; }
     .header__index__title {
-      font-size: 3.0em;
+      font-size: 5rem;
       margin: 0 auto;
       color: #fff;
-      padding-top: 2em; }
+      padding-top: 0.8em; }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 0.938em; }
+  .wrapper__img {
+    width: 100%; }
+  .wrapper__content {
+    width: 100%;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column; }
+
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100%; } }

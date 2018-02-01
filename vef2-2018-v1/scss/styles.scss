@@ -1,22 +1,90 @@
 /* Aldrei gleyma að keyra "npm run scss" til að compile öll scss*/
+/* 
+   Grunn letur stærð 16px
+      eina sem má nota fyrir fyrirsagnir
+      24px : 1.5em
+      32px : 2.0em
+      42px : 3.0em
+   Bil meiga bara vera annaðhvort 15px eða 30px  
+   Bakgrunnslitur er #eee og letur #333. Fyrirsögn í haus er #eee 
+
+   Sá ekki þörf þess að skipta þetta upp i skjöl i.e header.scss error.scss etc..
+   þess venga er þetta scss möppu, svo litið af kóða hætti við
+*/
+
 @charset "UTF-8";
 
-*, *:before, *:after {/* stylelint-disable-line */
+/* ------------ Variebles START --------- */
+$h1FontSize: 3.0em;
+$h2FontSize: 2.0em;
+$h3FontSize: 1.5em;
+$headingColor: #eee;
+$backGroundColor: #eee;
+$fontColor: #333;
+$smallPadding: 0.938em;
+$bigPadding: 1.875em;
+/* ------------ Variebles END --------- */
+
+/* nullstilling*/
+*, *:before, *:after {
   box-sizing: inherit;
   padding: 0;
   margin: 0;
 }
 
-html {/* stylelint-disable-line */
+/* Default stillingar */
+html {
   box-sizing: border-box;
   font-size: 16px;
   line-height: 1.5;
-  background-color: #eee;
-  color: #333;
+  background-color: $backGroundColor;
+  color: $fontColor;
 }
 
+/* vill að myndin mun alltaf fylla upp foreldran */
+img { 
+  width: 100%;
+}
+
+/* taka i burt undirstrik og  annað */
+a {
+  text-decoration: none;
+  color: $fontColor;
+}
+
+/* gefa flex svo það er hægt að raða gögnum i þvi*/
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $bigPadding;
+}
+
+/* heading stillingar start */
+h1 {
+  font-size: $h1FontSize;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  font-size: $h2FontSize;
+  padding-bottom: $smallPadding;
+  font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+  font-size: $h3FontSize;
+  font-family: 'Roboto', sans-serif;
+}
+/* heading stillingar END */
+
+p {
+  padding-bottom: $smallPadding;
+  font-weight: 500;
+}
+
+
 @media (min-width: 1200px) {
-  body { /* stylelint-disable-line */
+  body {
     max-width: 1200px;
     margin: 0 auto;
     overflow-x: hidden;
@@ -24,23 +92,70 @@ html {/* stylelint-disable-line */
   }
 }
 
+.backbutton {
+  font-weight: 700;
+}
+
+/* Clasi fyrir villu meldingar */
+.error {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  &__text {
+    margin: 0 auto;
+    font-size: 4em;
+    font-family: 'Lora', sans-serif, serif !important;
+  }
+  
+  &__refferal {
+    padding-top: 1em;
+    margin: 0 auto;
+    font-weight: 700;
+  }
+}
+
 .header {
   width: 100%;
-  padding-bottom: 1.875em;
+  padding-bottom: $bigPadding;
 
   &__index {
     display: flex;
     width: 100%;
     height: 50vh;
-    background: transparent url("header.jpg") no-repeat fixed 50% 50%;
+    background: transparent url("header.jpg") no-repeat;
     background-size: cover;
+    background-position: 50% 65%;
 
     &__title {
-      font-size: 3.0em;
+      font-size: 5rem;
       margin: 0 auto;
       color: #fff;
-      padding-top: 2em;
+      padding-top: 0.8em;
       }
     }
   }
   
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: $smallPadding;
+
+  &__img {
+    width: 100%;
+  }
+
+  &__content{
+    width: 100%;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
+}

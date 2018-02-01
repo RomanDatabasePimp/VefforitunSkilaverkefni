@@ -1,19 +1,24 @@
 {
-  "name": "Skilaverk_1",
+  "name": "skilaverk1_roman",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
+    "eslint": "eslint *.js **/*.js",
     "start": "node app.js",
     "scss": "node-sass --watch scss -o public"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  },
   "dependencies": {
-    "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "async": "^2.6.0",
+    "ejs": "^2.5.7",
+    "img-placeholder-src": "^3.1.1-1",
     "markdown-parse": "^0.2.1",
-    "node-sass": "^4.7.2"
+    "node-sass": "^4.7.2",
+    "promise": "^8.0.1"
   }
 }

@@ -1,97 +1,51 @@
-/* Requires START */
+/* -------------------------- REQUIRES START -------------------------- */
 const express = require('express');
 const path = require('path');
-/* Requires END */
+const router = require('./articles');
+/* -------------------------- REQUIRES END --------------------------  */
 
-/* Variables init START */
+/* ------------------------ Variables init START ----------------------- */
 const app = express();
 
 const hostname = '127.0.0.1';
 const port = 3000;
-/* Variables init END */
+/* ------------------------ Variables init END ----------------------- */
 
-/* Tengjum css skjali við */
+/* ------------------------- Styllingar START------------------------- */
+
+/* Banna til að opna .md skrár */
+app.all('/*.md', (req, res, next) => {
+  res.status(403).res.status(404).render('error', { title: 'Villa', headder: 'Fannst ekki', content: '<main><div class="error"><h3 class="error__text"> Ó nei efnið fanst ekki! </h3><a class="error__refferal" href="../">Til baka</a></div></main>' });
+  next();
+});
+
+/* Tengja css skjali */
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* Tengja views möppu og viljum sjá .ejs skjöl */
+/* Tengja articles skjal svo hægt að ná i myndir */
+app.use(express.static(path.join(__dirname, 'articles')));
+
+/* Tengja views möppu og nota sjá .ejs skjöl */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-/* Default fyrir fyrir heimasiðu er byrt index */
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Forsíða' ,headder: 'Greinasafnið'});
-});
-
-/* Til að henda fólk i villu */
-app.get('/error', (req, res) => {
-  res.render('error', { title: 'Villa' ,headder: 'Villa kom upp'});
-});
-
-/* Ef eitthvað er ekki til */
+/* ------------------------- Styllingar END------------------------- */
 function notFoundHandler(req, res, next) {
-  res.status(404).render('notfound', { title: '404' ,headder: 'Fanst ekki'});
+  res.status(404).render('error', { title: 'Villa', headder: 'Fannst ekki', content: '<main><div class="error"><h3 class="error__text"> Ó nei efnið fanst ekki! </h3><a class="error__refferal" href="../">Til baka</a></div></main>' });
+  next();
 }
 
 function errorHandler(err, req, res, next) {
   console.error(err);
-  res.status(500).render('notfound', { title: '500' ,headder: 'Villa'});
+  res.status(500).render('error', { title: 'Villa', headder: 'Villa kom up', content: '<main><div class="error"><a class="error__refferal" href="../">Til baka</a></div></main>' });
+  next();
 }
 
+/* Notum routerinn og villu meðhölun */
+app.use('/', router);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-
-
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  // console.log(`Server running at http://${hostname}:${port}/`);
 });
-/* ----------------------------------------------------------------------------------------------------------------- */
-const util = require('util');
-const fs = require('fs');
-const parser = require('markdown-parse');
-
-const readNamesAsync = util.promisify(fs.readdir);
-const readFileAsync = util.promisify(fs.readFile);
-
-
-function ReadFilesNamesAsync(FolderLoc) {
-  return readNamesAsync(FolderLoc)
-}
-function GetMdFiles(FileNames){
-  const tempArr = [];
-  FileNames.forEach(item => { if(item.substr(item.length-3,item.length) == '.md'){tempArr.push(item);}})
-  return tempArr;
-}
-function ReadFilesAsync(NameOfFile){
-  return readFileAsync('articles/'+NameOfFile)
-}
-
-async function GetFiles(FileToBeRead){
-  
-}
-ReadFilesNamesAsync('articles').then(FileNames => { 
-  GetMdFiles(FileNames).forEach(item => {
-    ReadFilesAsync(item).then(data => {
-
-    });
-  })
-})
-
-
-/*
-          console.log('the front matter:')
-          console.dir(result.attributes)
-          console.log('the html:')
-          console.log(result.html)
-          .forEach(item => { 
-      ReadFilesAsync(item)
-      .then(data => {
-        parser(data.toString('utf8'),(err, result) => {
-          temp.push("h");
-        })
-      })
-    
-    })
-          
-          
-          */
